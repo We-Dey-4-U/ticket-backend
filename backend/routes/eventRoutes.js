@@ -6,7 +6,6 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-
 // Set up multer storage configuration
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -30,5 +29,10 @@ router.post('/events', verifyTokenMiddleware, upload.single('event_flyer'), even
 router.get('/events', eventController.getAllEvents);
 router.get('/events/:eventId', eventController.getEventById);
 
+// Prefix the routes with the new server URL
+const SERVER_URL = 'https://ticket-backend-1-09ex.onrender.com/';
+router.post(`${SERVER_URL}/api/events`, verifyTokenMiddleware, upload.single('event_flyer'), eventController.createEvent);
+router.get(`${SERVER_URL}/api/events`, eventController.getAllEvents);
+router.get(`${SERVER_URL}/api/events/:eventId`, eventController.getEventById);
 
 module.exports = router;

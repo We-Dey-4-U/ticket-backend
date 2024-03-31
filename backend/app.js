@@ -9,7 +9,6 @@ const multer = require('multer'); // Import multer for handling file uploads
 const fs = require('fs');
 const Ticket = require('./models/Ticket');
 
-
 // Initialize Express app
 const app = express();
 
@@ -41,7 +40,6 @@ app.use(cors({
   credentials: true
 }));
 
-
 // Connect to MongoDB
 connect()
   .then(() => {
@@ -52,15 +50,7 @@ connect()
     // Serve images from the qr_images directory
     app.use('/qr_images', express.static(path.join(__dirname, 'qr_images')));
     // Route to serve QR code image
-    // Route to serve the QR code image
     
-
-
-
-    
-    
-
-
     // Error handling middleware
     app.use((err, req, res, next) => {
       console.error(err.stack);
