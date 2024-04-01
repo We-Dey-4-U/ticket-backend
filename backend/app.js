@@ -36,8 +36,13 @@ const upload = multer({ storage: storage });
 app.use(upload.single('event_flyer'));
 
 // Enable CORS
+//app.use(cors({
+ // credentials: true
+//}));
+
+
 app.use(cors({
-  credentials: true
+  origin: 'https://eventticketfrontend233.onrender.com/'
 }));
 
 // Connect to MongoDB
