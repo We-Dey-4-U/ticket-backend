@@ -36,10 +36,9 @@ const upload = multer({ storage: storage });
 app.use(upload.single('event_flyer'));
 
  //Enable CORS
-app.use(cors({
+ app.options('*', cors({
   credentials: true
 }));
-
 
 //app.use(cors({
  // origin: 'https://eventticketfrontend233.onrender.com/'
