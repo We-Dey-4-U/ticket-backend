@@ -36,9 +36,21 @@ const upload = multer({ storage: storage });
 app.use(upload.single('event_flyer'));
 
  //Enable CORS
- app.options('*', cors({
-  credentials: true
-}));
+ //app.options('*', cors({
+ // credentials: true
+//}));
+
+// Allow requests from React frontend
+const reactOrigin = 'https://sports-hompage-1983.onrender.com/';
+// Allow requests from HTML-based frontend
+const htmlOrigin = 'https://eventticketfrontend233.onrender.com/';
+
+const corsOptions = {
+    origin: [reactOrigin, htmlOrigin], // Specify multiple allowed origins
+    credentials: true // Enable credentials if needed
+};
+
+app.use(cors(corsOptions));
 
 //app.use(cors({
  // origin: 'https://eventticketfrontend233.onrender.com/'
