@@ -36,9 +36,12 @@ const upload = multer({ storage: storage });
 app.use(upload.single('event_flyer'));
 
 
-app.use(cors({
-  origin: '*'
-}));
+app.use(cors());
+
+
+//app.use(cors({
+ // origin: '*'
+//}));
 
 // Connect to MongoDB
 connect()
