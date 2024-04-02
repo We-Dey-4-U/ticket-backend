@@ -35,14 +35,8 @@ const upload = multer({ storage: storage });
 // Use multer middleware for handling file uploads
 app.use(upload.single('event_flyer'));
 
- //Enable CORS
- //app.options('*', cors({
- // credentials: true
-//}));
-
-// Allow requests from React frontend
+// Allow requests from React frontend and HTML-based frontend
 const reactOrigin = 'https://sports-hompage-1983.onrender.com/';
-// Allow requests from HTML-based frontend
 const htmlOrigin = 'https://eventticketfrontend233.onrender.com/';
 
 const corsOptions = {
@@ -51,10 +45,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-//app.use(cors({
- // origin: 'https://eventticketfrontend233.onrender.com/'
-//}));
 
 // Connect to MongoDB
 connect()
