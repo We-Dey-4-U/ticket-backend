@@ -35,16 +35,10 @@ const upload = multer({ storage: storage });
 // Use multer middleware for handling file uploads
 app.use(upload.single('event_flyer'));
 
-// Allow requests from React frontend and HTML-based frontend
-const reactOrigin = 'https://sports-hompage-1983.onrender.com/';
-const htmlOrigin = 'https://eventticketfrontend233.onrender.com/';
 
-const corsOptions = {
-    origin: [reactOrigin, htmlOrigin], // Specify multiple allowed origins
-    credentials: true // Enable credentials if needed
-};
-
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: '*'
+}));
 
 // Connect to MongoDB
 connect()
@@ -80,3 +74,31 @@ process.on('SIGINT', async () => {
   console.log('Disconnected from MongoDB');
   process.exit(0);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //Enable CORS
+//app.use(cors({
+//  credentials: true
+//}));
+
+//app.use(cors());
+
+
+
+//app.use(cors({
+ // origin: 'https://eventticketfrontend233.onrender.com/'
+
+//}));
